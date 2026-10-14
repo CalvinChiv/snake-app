@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Food from './components/Food';
 import Snake from './components/Snake';
+import Tongue from './components/Tongue';
 
 const randomFoodPosition = () => {
   const pos = { x: 0, y: 0 };
@@ -65,8 +66,6 @@ function App() {
         break;
       default:
         break;
-
-        console.log(x + " " + y);
     }
 
     tempSnake.push({
@@ -117,6 +116,7 @@ function App() {
         </>
       )}
       <Snake snake={snake} lastDirection={lastDirection} />
+      <Tongue snake={snake} lastDirection={lastDirection} />
       {!gameOver && (
         <>
           <Food position={foodPosition} />

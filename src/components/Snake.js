@@ -5,7 +5,7 @@ function Snake({snake}) {
     return(
         <div>
             {snake.map((box, i) => (
-                <div
+                <div //body
                     style={{
                         width: '15px',
                         height: '15px',
