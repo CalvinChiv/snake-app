@@ -1,9 +1,12 @@
 import React from 'react';
 
-function Snake({position}) {
+function Snake({snake}) {
+    console.log("Snake:", snake);
+    console.log("Is array?", Array.isArray(snake));
+
     return(
         <div>
-            {position.map((box, i) => (
+            {snake.map((box, i) => (
                 <div
                     style={{
                         width: '15px',

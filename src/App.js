@@ -23,9 +23,9 @@ const initialSnake = {
 };
 
 function App() {
-  const [snake, setSnake] = useState(initialSnake);
+  const [snake, setSnake] = useState(initialSnake.snake);
   const [lastDirection, setLastDirection] = useState(initialSnake.direction);
-  const [foodPosition, setFoodDirection] = useState(randomFoodPosition);
+  const [foodPosition, setFoodPosition] = useState(randomFoodPosition);
   const [isStarted, setIsStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const playgroundRef = useRef();
@@ -35,9 +35,9 @@ function App() {
 
     if (
       snake[snake.length - 1].x === 100 ||
-      snake[snake.length - 1].x === 0 ||
+      snake[snake.length - 1].x === -4 ||
       snake[snake.length - 1].y === 100 ||
-      snake[snake.length - 1].y === 0
+      snake[snake.length - 1].y === -4
     ) {
       setGameOver(true);
       return;
@@ -72,9 +72,9 @@ function App() {
       y,
     });
     if (x !== foodPosition.x || y !== foodPosition.y) tempSnake.shift();
-    else foodPosition(randomFoodPosition());
+    else setFoodPosition(randomFoodPosition());
     setSnake(tempSnake);
-  }
+  };
 
   return (
     <div
@@ -94,7 +94,7 @@ function App() {
           >
             Start
           </button>
-          <div className="arrpw-msg text">Press Arrow Keys to Play!</div>
+          <div className="arrow-msg text">Press Arrow Keys to Play!</div>
         </>
       )}
       {gameOver && (
