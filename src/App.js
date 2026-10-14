@@ -23,6 +23,19 @@ const initialSnake = {
   speed: 100,
 };
 
+function isHittingBody(snake) {
+  let hitBody = false;
+
+  for (let i = 0; i < snake.length - 2; i++) {
+    if (snake[i].x === snake[snake.length - 1].x && snake[i].y === snake[snake.length - 1].y) {
+      console.log('check')
+      hitBody = true;
+    }
+  };
+
+  return hitBody;
+}
+
 function App() {
   const [snake, setSnake] = useState(initialSnake.snake);
   const [lastDirection, setLastDirection] = useState(initialSnake.direction);
@@ -38,7 +51,8 @@ function App() {
       snake[snake.length - 1].x === 100 ||
       snake[snake.length - 1].x === -4 ||
       snake[snake.length - 1].y === 100 ||
-      snake[snake.length - 1].y === -4
+      snake[snake.length - 1].y === -4 ||
+      isHittingBody(snake)
     ) {
       setGameOver(true);
       return;
@@ -51,6 +65,7 @@ function App() {
     const tempSnake = [...snake];
     let x = tempSnake[tempSnake.length - 1].x,
       y = tempSnake[tempSnake.length - 1].y;
+
     switch (lastDirection) {
       case "ArrowUp":
         y -= 4;
@@ -72,6 +87,7 @@ function App() {
       x,
       y,
     });
+
     if (x !== foodPosition.x || y !== foodPosition.y) tempSnake.shift();
     else setFoodPosition(randomFoodPosition());
     setSnake(tempSnake);
@@ -115,8 +131,11 @@ function App() {
           </button>
         </>
       )}
+
+      {/* Renders */}
       <Snake snake={snake} lastDirection={lastDirection} />
       <Tongue snake={snake} lastDirection={lastDirection} />
+
       {!gameOver && (
         <>
           <Food position={foodPosition} />

@@ -15,7 +15,7 @@ function Tongue({ snake, lastDirection }) {
             _width = 9;
             _height = 3;
             _left = `${headX + 4}%`;
-            _top = `${headY + 2}%`;
+            _top = `${headY + 2.1}%`;
             break;
         case "ArrowDown":
             _width = 3;
@@ -43,7 +43,7 @@ function Tongue({ snake, lastDirection }) {
                     top: _top,
                     backgroundColor: 'red',
                     position: 'absolute',
-                    zIndex: 1,
+                    zIndex: 2,
                 }
             }
         />

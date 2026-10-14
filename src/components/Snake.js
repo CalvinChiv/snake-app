@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Snake({snake}) {
-
     return(
         <div>
             {snake.map((box, i) => (

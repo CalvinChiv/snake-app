@@ -2,6 +2,7 @@
 My Additions:
 Implemented Background
 Tongue/Direction Indicator
+Game Over On Hit Self
 
 Planned:
 Stats
