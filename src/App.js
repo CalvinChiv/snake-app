@@ -65,6 +65,8 @@ function App() {
         break;
       default:
         break;
+
+        console.log(x + " " + y);
     }
 
     tempSnake.push({

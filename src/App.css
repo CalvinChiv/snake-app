@@ -2,6 +2,7 @@
   width: 500px;
   height: 500px;
   border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.859);
   position: relative;
   display: flex;
   justify-content: center;

@@ -1,8 +1,6 @@
 import React from 'react';
 
 function Snake({snake}) {
-    console.log("Snake:", snake);
-    console.log("Is array?", Array.isArray(snake));
 
     return(
         <div>

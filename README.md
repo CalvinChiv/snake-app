@@ -1,3 +1,13 @@
+///////////////////////////////////////////////////////////////////////////////////////////
+My Additions:
+Implemented Background
+
+Planned:
+Stats
+Normal and EZ Mode (Able to pass through body AND wrapped pacman style map)
+Better Graphics
+///////////////////////////////////////////////////////////////////////////////////////////
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
