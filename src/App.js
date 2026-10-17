@@ -3,6 +3,7 @@ import './App.css';
 import Food from './components/Food';
 import Snake from './components/Snake';
 import Tongue from './components/Tongue';
+import Scoreboard from './components/Scoreboard';
 
 const randomFoodPosition = () => {
   const pos = { x: 0, y: 0 };
@@ -28,7 +29,6 @@ function isHittingBody(snake) {
 
   for (let i = 0; i < snake.length - 2; i++) {
     if (snake[i].x === snake[snake.length - 1].x && snake[i].y === snake[snake.length - 1].y) {
-      console.log('check')
       hitBody = true;
     }
   };
@@ -99,7 +99,6 @@ function App() {
       onKeyDown={(e) => setLastDirection(e.key)}
       ref={playgroundRef}
       tabIndex={0}>
-      {isStarted && <div className="count"> score: {snake.length - 3}</div>}
       {!isStarted && (
         <>
           <button
@@ -135,6 +134,9 @@ function App() {
       {/* Renders */}
       <Snake snake={snake} lastDirection={lastDirection} />
       <Tongue snake={snake} lastDirection={lastDirection} />
+      {isStarted &&
+      <Scoreboard score={snake.length - 3}/>
+      }
 
       {!gameOver && (
         <>

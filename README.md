@@ -6,7 +6,7 @@ Game Over On Hit Self
 
 Planned:
 Stats
-Normal and EZ Mode (Able to pass through body AND wrapped pacman style map)
+Normal and EZ Mode (Able to pass through body AND wrapped pacman style map) 
 Better Graphics
 ///////////////////////////////////////////////////////////////////////////////////////////
 

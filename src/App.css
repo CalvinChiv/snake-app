@@ -41,11 +41,3 @@ button {
 .game-over{
   font-size: 3rem;
 }
-
-.count{
-  position: absolute;
-  font-size: 2rem;
-  bottom: 0;
-  color: #eb2d2d;
-  opacity: 0.5;
-}
