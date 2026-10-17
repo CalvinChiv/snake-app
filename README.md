@@ -3,6 +3,7 @@ My Additions:
 Implemented Background
 Tongue/Direction Indicator
 Game Over On Hit Self
+Scoreboard
 
 Planned:
 Stats

@@ -58,7 +58,7 @@ function App() {
       setGameOver(true);
 
       // adds score to scoreboard
-      setScores((prev) => [...prev, + snake.length - 3]);
+      setScores((prev) => [snake.length - 3, ...prev]);
 
       return;
     }
@@ -99,8 +99,11 @@ function App() {
   };
 
   return (
-    <> {/* fragment is our whole app */}
-      <Scoreboard score={snake.length - 3} />
+    <div className='gameScreen'>
+      <Scoreboard 
+      score={snake.length - 3} 
+      scoreList={scores}
+      isPlaying={!gameOver}/>
       <div
         className="App"
         onKeyDown={(e) => setLastDirection(e.key)}
@@ -148,7 +151,7 @@ function App() {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
