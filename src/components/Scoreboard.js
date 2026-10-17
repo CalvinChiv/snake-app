@@ -1,6 +1,6 @@
 import React from "react";
 
-function Scoreboard({ score, scoreList, isPlaying }) {
+function Scoreboard({ score, lives, scoreList, isPlaying }) {
 
     const scoreStyle = {
         position: "static",
@@ -18,11 +18,13 @@ function Scoreboard({ score, scoreList, isPlaying }) {
         border: '1px solid black'
     };
 
-    var content = <div>Score: {score}</div>;
+    var content = <div><p>Score: {score}</p>
+        <p>lives: {lives}</p>
+    </div>;
 
     if (!isPlaying) {
         content = <div>{scoreList.map((score, i) => {
-            return <p>Player {scoreList.length - i}: {score}</p>
+            return <p>Snake {scoreList.length - i}: {score}</p>
         })}</div>;
     }
 

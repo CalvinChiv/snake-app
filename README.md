@@ -4,11 +4,7 @@ Implemented Background
 Tongue/Direction Indicator
 Game Over On Hit Self
 Scoreboard
-
-Planned:
-Stats
-Normal and EZ Mode (Able to pass through body AND wrapped pacman style map) 
-Better Graphics
+Lives every 10 points
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 # Getting Started with Create React App

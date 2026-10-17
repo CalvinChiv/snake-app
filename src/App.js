@@ -40,27 +40,37 @@ function App() {
   const [snake, setSnake] = useState(initialSnake.snake);
   const [lastDirection, setLastDirection] = useState(initialSnake.direction);
   const [foodPosition, setFoodPosition] = useState(randomFoodPosition);
+  const [currentScore, setCurrentScore] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [scores, setScores] = useState([]);
+  const [lives, setLives] = useState(0);
   const playgroundRef = useRef();
 
   useEffect(() => {
     if (!isStarted || gameOver) return;
 
-    if (
+    if ( // Collision Check
       snake[snake.length - 1].x === 100 ||
       snake[snake.length - 1].x === -4 ||
       snake[snake.length - 1].y === 100 ||
       snake[snake.length - 1].y === -4 ||
       isHittingBody(snake)
     ) {
-      setGameOver(true);
 
-      // adds score to scoreboard
-      setScores((prev) => [snake.length - 3, ...prev]);
+      if (lives === 0) {
+        setGameOver(true);
 
-      return;
+        // adds score to scoreboard
+        setScores((prev) => [currentScore, ...prev]);
+      }
+      else {
+        setLives(lives - 1) 
+
+        // Respawn the snake
+        setSnake(initialSnake.snake);
+        setLastDirection(initialSnake.direction);
+      };
     }
     const interval = setInterval(move, initialSnake.speed);
     return () => clearInterval(interval);
@@ -94,16 +104,25 @@ function App() {
     });
 
     if (x !== foodPosition.x || y !== foodPosition.y) tempSnake.shift();
-    else setFoodPosition(randomFoodPosition());
+    else {
+      setFoodPosition(
+        randomFoodPosition())
+        setCurrentScore(currentScore+1);
+
+      if (lives < 3 && currentScore > 1 && (currentScore + 1) % 10 == 0)
+        setLives(lives + 1);
+    }
+
     setSnake(tempSnake);
   };
 
   return (
     <div className='gameScreen'>
-      <Scoreboard 
-      score={snake.length - 3} 
-      scoreList={scores}
-      isPlaying={!gameOver}/>
+      <Scoreboard
+        score={currentScore}
+        lives={lives}
+        scoreList={scores}
+        isPlaying={!gameOver} />
       <div
         className="App"
         onKeyDown={(e) => setLastDirection(e.key)}
@@ -132,6 +151,8 @@ function App() {
                 setGameOver(false);
                 setSnake(initialSnake.snake);
                 setLastDirection(initialSnake.direction);
+                setCurrentScore(0);
+                setLives(0);
                 playgroundRef.current.focus();
               }}
               type='submit'
