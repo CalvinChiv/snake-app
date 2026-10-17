@@ -1,6 +1,6 @@
 import React from "react";
 
-function Scoreboard({ score }) {
+function Scoreboard({ score, scoreList, isPlaying }) {
 
     const scoreStyle = {
         position: "relative",
@@ -8,7 +8,6 @@ function Scoreboard({ score }) {
         top: -10,
         backgroundColor: "rgb(255, 255, 255)",
         color: "#eb2d2d",
-        opacity: 0.5,
     };
 
     return (

@@ -26,13 +26,13 @@ const initialSnake = {
 
 function isHittingBody(snake) {
   let hitBody = false;
-
+  
   for (let i = 0; i < snake.length - 2; i++) {
     if (snake[i].x === snake[snake.length - 1].x && snake[i].y === snake[snake.length - 1].y) {
       hitBody = true;
     }
   };
-
+  
   return hitBody;
 }
 
@@ -42,10 +42,11 @@ function App() {
   const [foodPosition, setFoodPosition] = useState(randomFoodPosition);
   const [isStarted, setIsStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [scores, setScores] = useState([]);
   const playgroundRef = useRef();
 
   useEffect(() => {
-    if (!isStarted) return;
+    if (!isStarted || gameOver) return;
 
     if (
       snake[snake.length - 1].x === 100 ||
@@ -55,6 +56,10 @@ function App() {
       isHittingBody(snake)
     ) {
       setGameOver(true);
+
+      // adds score to scoreboard
+      setScores((prev) => [...prev, + snake.length - 3]);
+
       return;
     }
     const interval = setInterval(move, initialSnake.speed);
